@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>Property Valuation Studio — v1.0</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Property Valuation Studio home">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span><strong>Property Valuation Studio</strong><small>AGENT WORKSPACE · V1.0</small></span>
+    </a>
+    <div class="top-actions">
+      <span id="saveStatus" class="save-status" role="status" aria-live="polite">Ready</span>
+      <button class="button button-primary" id="saveButton" type="button">Save project</button>
+    </div>
+  </header>
+  <div class="subnav"><a class="button button-secondary back-button" href="../index.html">← Back to Main Menu</a></div>
+
+  <main id="top">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">A considered approach to every property</p>
+        <h1>Valuation workspace</h1>
+        <p class="intro-copy">Bring the property facts together with your professional judgement. Your experience leads every recommendation.</p>
+      </div>
+      <div class="project-card">
+        <label for="projectSelect">Current project</label>
+        <div class="project-controls">
+          <select id="projectSelect" aria-label="Load a saved project"></select>
+          <button id="newProjectButton" class="button button-secondary" type="button">＋ New project</button>
+        </div>
+        <p id="projectMeta" class="project-meta">Version 1.0 · Not saved yet</p>
+      </div>
+    </section>
+
+    <nav class="section-nav" aria-label="Project sections">
+      <button class="nav-tab active" type="button" data-section="property" aria-current="page"><span>01</span> Property information</button>
+      <button class="nav-tab" type="button" data-section="strategy"><span>02</span> Agent’s ideas &amp; strategy</button>
+    </nav>
+
+    <form id="projectForm" autocomplete="off">
+      <section id="propertySection" class="content-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">The known details</p><h2>Property information</h2></div>
+          <p>Complete the fields you know. Leave anything unconfirmed blank.</p>
+        </div>
+        <div class="panel">
+          <div class="field-grid">
+            <div class="field field-wide"><label for="address">Property address</label><input id="address" name="address" type="text" placeholder="e.g. 14 High Street, Cambridge"></div>
+            <div class="field"><label for="propertyType">Property type</label><select id="propertyType" name="propertyType"><option value="">Select if known</option><option>Detached house</option><option>Semi-detached house</option><option>Terraced house</option><option>Flat / apartment</option><option>Bungalow</option><option>Cottage</option><option>Other</option></select></div>
+            <div class="field"><label for="condition">Property condition</label><select id="condition" name="condition"><option value="">Select if known</option><option>Newly built</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Requires modernisation</option><option>Not assessed</option></select></div>
+            <div class="field"><label for="bedrooms">Bedrooms</label><input id="bedrooms" name="bedrooms" type="number" min="0" step="1" inputmode="numeric" placeholder="Not specified"></div>
+            <div class="field"><label for="bathrooms">Bathrooms</label><input id="bathrooms" name="bathrooms" type="number" min="0" step="1" inputmode="numeric" placeholder="Not specified"></div>
+            <div class="field"><label for="floorArea">Floor area</label><div class="input-unit"><input id="floorArea" name="floorArea" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 1,250"><select id="floorAreaUnit" name="floorAreaUnit" aria-label="Floor area unit"><option value="sq ft">sq ft</option><option value="m²">m²</option></select></div></div>
+            <div class="field"><label for="landSize">Land / garden size</label><input id="landSize" name="landSize" type="text" placeholder="Size or description, if known"></div>
+            <div class="field field-wide"><label for="renovationHistory">Renovation history</label><textarea id="renovationHistory" name="renovationHistory" rows="3" placeholder="Known works and dates, if available"></textarea></div>
+            <div class="field"><label for="keyFeatures">Key features</label><textarea id="keyFeatures" name="keyFeatures" rows="4" placeholder="One feature per line, or a short description"></textarea></div>
+            <div class="field"><label for="specialCharacteristics">Special characteristics</label><textarea id="specialCharacteristics" name="specialCharacteristics" rows="4" placeholder="For example, setting, outlook or architectural details"></textarea></div>
+            <div class="field"><label for="ownersExpectations">Owner’s expectations</label><textarea id="ownersExpectations" name="ownersExpectations" rows="4" placeholder="Timing, preferred approach or other expectations"></textarea></div>
+            <div class="field"><label for="additionalNotes">Additional notes</label><textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Other relevant details and points to verify"></textarea></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="strategySection" class="content-section" hidden>
+        <div class="section-heading">
+          <div><p class="eyebrow">Your expertise comes first</p><h2>Agent’s ideas &amp; strategy</h2></div>
+          <p>Shape a thoughtful, individual plan from your own assessment.</p>
+        </div>
+        <div class="strategy-list">
+          <article class="strategy-card"><div class="strategy-title"><span>01</span><div><h3>My professional assessment</h3><p>Your personal assessment and observations of the property.</p></div></div><label class="visually-hidden" for="assessment">My professional assessment</label><textarea id="assessment" name="assessment" rows="7" placeholder="Record your professional view, observations and the reasoning behind them…"></textarea></article>
+          <article class="strategy-card"><div class="strategy-title"><span>02</span><div><h3>Ideal buyer profile</h3><p>Who may be the best fit for this property, and why?</p></div></div><label class="visually-hidden" for="buyerProfile">Ideal buyer profile</label><textarea id="buyerProfile" name="buyerProfile" rows="6" placeholder="Describe likely buyer types, their needs and what may appeal to them…"></textarea></article>
+          <article class="strategy-card"><div class="strategy-title"><span>03</span><div><h3>Property preparation plan</h3><p>Suggestions to help prepare the property for market.</p></div></div><label class="visually-hidden" for="preparationPlan">Property preparation plan</label><textarea id="preparationPlan" name="preparationPlan" rows="7" placeholder="List proposed improvements or changes and the reason for each…"></textarea><p class="notice"><strong>Proposals only.</strong> Suggestions are not approved works. Structural changes require assessment by appropriately qualified professionals before any decision or work.</p></article>
+          <article class="strategy-card"><div class="strategy-title"><span>04</span><div><h3>Unique selling points</h3><p>What sets this property apart in its market?</p></div></div><label class="visually-hidden" for="sellingPoints">Unique selling points</label><textarea id="sellingPoints" name="sellingPoints" rows="6" placeholder="Capture the features, story and details that distinguish this property…"></textarea></article>
+          <article class="strategy-card"><div class="strategy-title"><span>05</span><div><h3>Marketing strategy</h3><p>How should the property be presented and promoted?</p></div></div><label class="visually-hidden" for="marketingStrategy">Marketing strategy</label><textarea id="marketingStrategy" name="marketingStrategy" rows="7" placeholder="Consider presentation, photography, audience, channels and launch approach…"></textarea></article>
+          <article class="strategy-card"><div class="strategy-title"><span>06</span><div><h3>Additional agent ideas</h3><p>Space for any other thoughts or opportunities.</p></div></div><label class="visually-hidden" for="additionalIdeas">Additional agent ideas</label><textarea id="additionalIdeas" name="additionalIdeas" rows="6" placeholder="Add any other ideas you want to explore…"></textarea></article>
+        </div>
+      </section>
+    </form>
+
+    <section class="save-panel" aria-label="Project file actions">
+      <div><p class="eyebrow">Your work, your records</p><h2>Project files</h2><p>Projects are saved in this browser. Export a JSON copy to keep a backup or move a project to another computer.</p></div>
+      <div class="file-actions"><button id="exportButton" class="button button-secondary" type="button">Export JSON</button><button id="importButton" class="button button-secondary" type="button">Import JSON</button><input id="importFile" class="visually-hidden" type="file" accept=".json,application/json" aria-label="Choose a project JSON file"></div>
+      <p class="storage-warning">Clearing browser data may delete projects saved here. Keep a JSON export as a backup.</p>
+    </section>
+    <footer><span>Property Valuation Studio <span class="footer-dot">·</span> Version 1.0</span><span>Professional judgement remains at the heart of every report.</span></footer>
+  </main>
+
+  <dialog id="newProjectDialog" class="dialog">
+    <form method="dialog" id="newProjectForm"><p class="eyebrow">Start a fresh workspace</p><h2>Create new project</h2><p>Your current project will be saved before the new one is created. Existing projects remain available in the project list.</p><label for="newProjectName">Project name <span class="optional">(optional)</span></label><input id="newProjectName" name="newProjectName" type="text" maxlength="100" placeholder="e.g. 14 High Street valuation"><div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button id="confirmNewProject" class="button button-primary" value="create">Create project</button></div></form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
